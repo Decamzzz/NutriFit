@@ -1,0 +1,512 @@
+{
+  "recipes": [
+    {
+      "id": "oat-banana-pancakes",
+      "category": "breakfast",
+      "emoji": "🥞",
+      "minutes": 15,
+      "grams": 260,
+      "kcal": 425,
+      "protein": 16.2,
+      "carbs": 67.3,
+      "fat": 11.6,
+      "name": {
+        "es": "Pancakes de avena y banano",
+        "en": "Oat and banana pancakes"
+      },
+      "description": {
+        "es": "Sin harina ni azúcar añadida: avena, banano y huevo.",
+        "en": "No flour or added sugar: just oats, banana and egg."
+      },
+      "ingredients": [
+        {
+          "es": "50 g de avena en hojuelas",
+          "en": "50 g rolled oats"
+        },
+        {
+          "es": "1 banano maduro mediano",
+          "en": "1 medium ripe banana"
+        },
+        {
+          "es": "1 huevo",
+          "en": "1 egg"
+        },
+        {
+          "es": "40 g de frutos rojos",
+          "en": "40 g mixed berries"
+        },
+        {
+          "es": "1 cucharadita de miel",
+          "en": "1 teaspoon honey"
+        },
+        {
+          "es": "Unas gotas de aceite de oliva",
+          "en": "A few drops of olive oil"
+        }
+      ],
+      "steps": [
+        {
+          "es": "Tritura la avena hasta obtener una harina gruesa y mézclala con el banano machacado y el huevo.",
+          "en": "Blitz the oats into a coarse flour and mix with the mashed banana and egg."
+        },
+        {
+          "es": "Calienta una sartén antiadherente con unas gotas de aceite y vierte porciones pequeñas de masa.",
+          "en": "Heat a non-stick pan with a few drops of oil and pour in small portions of batter."
+        },
+        {
+          "es": "Cocina 2–3 minutos por lado, hasta que estén doradas.",
+          "en": "Cook 2–3 minutes per side, until golden."
+        },
+        {
+          "es": "Sirve con los frutos rojos y un hilo de miel.",
+          "en": "Serve with the berries and a drizzle of honey."
+        }
+      ]
+    },
+    {
+      "id": "arepa-huevos-pericos",
+      "category": "breakfast",
+      "emoji": "🍳",
+      "minutes": 15,
+      "grams": 320,
+      "kcal": 420,
+      "protein": 17.7,
+      "carbs": 42.5,
+      "fat": 20.2,
+      "name": {
+        "es": "Arepa con huevos pericos y aguacate",
+        "en": "Arepa with scrambled eggs and avocado"
+      },
+      "description": {
+        "es": "Un desayuno colombiano clásico, alto en proteína y saciante.",
+        "en": "A classic Colombian breakfast, high in protein and filling."
+      },
+      "ingredients": [
+        {
+          "es": "1 arepa de maíz (45 g de harina precocida)",
+          "en": "1 corn arepa (45 g pre-cooked corn flour)"
+        },
+        {
+          "es": "2 huevos",
+          "en": "2 eggs"
+        },
+        {
+          "es": "1 tomate pequeño picado",
+          "en": "1 small tomato, chopped"
+        },
+        {
+          "es": "2 tallos de cebolla larga picada",
+          "en": "2 scallions, chopped"
+        },
+        {
+          "es": "¼ de aguacate",
+          "en": "¼ avocado"
+        },
+        {
+          "es": "1 cucharadita de aceite de oliva",
+          "en": "1 teaspoon olive oil"
+        }
+      ],
+      "steps": [
+        {
+          "es": "Mezcla la harina con agua tibia y una pizca de sal, forma un disco y cocínalo en una plancha hasta que dore por ambos lados.",
+          "en": "Mix the flour with warm water and a pinch of salt, shape a disc and cook it on a griddle until golden on both sides."
+        },
+        {
+          "es": "Sofríe el tomate y la cebolla en el aceite durante 3 minutos.",
+          "en": "Sauté the tomato and scallion in the oil for 3 minutes."
+        },
+        {
+          "es": "Agrega los huevos batidos y revuelve hasta que cuajen.",
+          "en": "Add the beaten eggs and stir until set."
+        },
+        {
+          "es": "Sirve los huevos sobre la arepa con el aguacate en láminas.",
+          "en": "Serve the eggs over the arepa with sliced avocado."
+        }
+      ]
+    },
+    {
+      "id": "quinoa-salmon-bowl",
+      "category": "lunch",
+      "emoji": "🥗",
+      "minutes": 25,
+      "grams": 410,
+      "kcal": 460,
+      "protein": 30.2,
+      "carbs": 34.3,
+      "fat": 22.3,
+      "name": {
+        "es": "Bowl de quinoa y salmón",
+        "en": "Quinoa and salmon bowl"
+      },
+      "description": {
+        "es": "Proteína magra y grasas buenas en un plato completo.",
+        "en": "Lean protein and healthy fats in one complete dish."
+      },
+      "ingredients": [
+        {
+          "es": "120 g de quinoa cocida (≈ 40 g en seco)",
+          "en": "120 g cooked quinoa (≈ 40 g dry)"
+        },
+        {
+          "es": "110 g de filete de salmón",
+          "en": "110 g salmon fillet"
+        },
+        {
+          "es": "50 g de pepino en cubos",
+          "en": "50 g diced cucumber"
+        },
+        {
+          "es": "50 g de tomates cherry",
+          "en": "50 g cherry tomatoes"
+        },
+        {
+          "es": "30 g de arvejas verdes cocidas",
+          "en": "30 g cooked green peas"
+        },
+        {
+          "es": "1 cucharadita de aceite de oliva",
+          "en": "1 teaspoon olive oil"
+        },
+        {
+          "es": "Jugo de ½ limón",
+          "en": "Juice of ½ lemon"
+        }
+      ],
+      "steps": [
+        {
+          "es": "Cocina la quinoa en agua con una pizca de sal durante 15 minutos y escúrrela.",
+          "en": "Cook the quinoa in salted water for 15 minutes and drain."
+        },
+        {
+          "es": "Sazona el salmón con sal y pimienta y cocínalo a la plancha 3–4 minutos por lado.",
+          "en": "Season the salmon with salt and pepper and pan-sear it 3–4 minutes per side."
+        },
+        {
+          "es": "Arma el bowl con la quinoa, las verduras y el salmón en láminas.",
+          "en": "Assemble the bowl with the quinoa, vegetables and flaked salmon."
+        },
+        {
+          "es": "Aliña con el aceite de oliva y el jugo de limón.",
+          "en": "Dress with the olive oil and lemon juice."
+        }
+      ]
+    },
+    {
+      "id": "chicken-brown-rice",
+      "category": "lunch",
+      "emoji": "🍗",
+      "minutes": 30,
+      "grams": 440,
+      "kcal": 450,
+      "protein": 38.8,
+      "carbs": 42.5,
+      "fat": 13.4,
+      "name": {
+        "es": "Pollo a la plancha con arroz integral",
+        "en": "Grilled chicken with brown rice"
+      },
+      "description": {
+        "es": "Un almuerzo clásico de gimnasio: simple, saciante y alto en proteína.",
+        "en": "A classic fitness lunch: simple, filling and high in protein."
+      },
+      "ingredients": [
+        {
+          "es": "150 g de pechuga de pollo",
+          "en": "150 g chicken breast"
+        },
+        {
+          "es": "150 g de arroz integral cocido",
+          "en": "150 g cooked brown rice"
+        },
+        {
+          "es": "60 g de lechuga y hojas verdes",
+          "en": "60 g lettuce and salad greens"
+        },
+        {
+          "es": "½ tomate en rodajas",
+          "en": "½ tomato, sliced"
+        },
+        {
+          "es": "30 g de zanahoria rallada",
+          "en": "30 g grated carrot"
+        },
+        {
+          "es": "2 cucharaditas de aceite de oliva",
+          "en": "2 teaspoons olive oil"
+        },
+        {
+          "es": "Jugo de ½ limón",
+          "en": "Juice of ½ lemon"
+        }
+      ],
+      "steps": [
+        {
+          "es": "Sazona la pechuga con ajo en polvo, sal y pimienta.",
+          "en": "Season the chicken with garlic powder, salt and pepper."
+        },
+        {
+          "es": "Cocínala a la plancha 5–6 minutos por lado, hasta que esté dorada y bien cocida por dentro.",
+          "en": "Grill it 5–6 minutes per side, until golden and cooked through."
+        },
+        {
+          "es": "Mezcla la lechuga, el tomate y la zanahoria y aliña con el aceite y el limón.",
+          "en": "Toss the lettuce, tomato and carrot and dress with the oil and lemon."
+        },
+        {
+          "es": "Sirve el pollo en láminas junto al arroz y la ensalada.",
+          "en": "Serve the sliced chicken with the rice and salad."
+        }
+      ]
+    },
+    {
+      "id": "lentil-vegetable-soup",
+      "category": "dinner",
+      "emoji": "🍲",
+      "minutes": 40,
+      "grams": 450,
+      "kcal": 370,
+      "protein": 18.4,
+      "carbs": 62.9,
+      "fat": 6.0,
+      "name": {
+        "es": "Sopa de lentejas con verduras",
+        "en": "Lentil and vegetable soup"
+      },
+      "description": {
+        "es": "Reconfortante, rica en fibra y proteína vegetal.",
+        "en": "Comforting, rich in fiber and plant protein."
+      },
+      "ingredients": [
+        {
+          "es": "60 g de lentejas secas",
+          "en": "60 g dry lentils"
+        },
+        {
+          "es": "1 zanahoria mediana en cubos",
+          "en": "1 medium carrot, diced"
+        },
+        {
+          "es": "1 papa pequeña en cubos",
+          "en": "1 small potato, diced"
+        },
+        {
+          "es": "¼ de cebolla picada",
+          "en": "¼ onion, chopped"
+        },
+        {
+          "es": "1 diente de ajo",
+          "en": "1 garlic clove"
+        },
+        {
+          "es": "1 cucharadita de aceite de oliva",
+          "en": "1 teaspoon olive oil"
+        },
+        {
+          "es": "1 puñado de espinaca",
+          "en": "1 handful of spinach"
+        }
+      ],
+      "steps": [
+        {
+          "es": "Sofríe la cebolla y el ajo en el aceite durante 3 minutos.",
+          "en": "Sauté the onion and garlic in the oil for 3 minutes."
+        },
+        {
+          "es": "Agrega las lentejas, la zanahoria, la papa y 500 ml de agua.",
+          "en": "Add the lentils, carrot, potato and 500 ml of water."
+        },
+        {
+          "es": "Cocina a fuego medio 25–30 minutos, hasta que las lentejas estén suaves.",
+          "en": "Simmer over medium heat for 25–30 minutes, until the lentils are tender."
+        },
+        {
+          "es": "Incorpora la espinaca los últimos 2 minutos y sazona con sal y comino.",
+          "en": "Stir in the spinach for the last 2 minutes and season with salt and cumin."
+        }
+      ]
+    },
+    {
+      "id": "spinach-mushroom-omelette",
+      "category": "dinner",
+      "emoji": "🍄",
+      "minutes": 15,
+      "grams": 330,
+      "kcal": 315,
+      "protein": 23.6,
+      "carbs": 9.7,
+      "fat": 20.8,
+      "name": {
+        "es": "Tortilla de espinaca y champiñones",
+        "en": "Spinach and mushroom omelette"
+      },
+      "description": {
+        "es": "Una cena ligera, rápida y alta en proteína.",
+        "en": "A light, quick, high-protein dinner."
+      },
+      "ingredients": [
+        {
+          "es": "3 huevos",
+          "en": "3 eggs"
+        },
+        {
+          "es": "50 g de espinaca",
+          "en": "50 g spinach"
+        },
+        {
+          "es": "80 g de champiñones laminados",
+          "en": "80 g sliced mushrooms"
+        },
+        {
+          "es": "20 g de cebolla picada",
+          "en": "20 g chopped onion"
+        },
+        {
+          "es": "1 cucharadita de aceite de oliva",
+          "en": "1 teaspoon olive oil"
+        },
+        {
+          "es": "1 tomate en rodajas para acompañar",
+          "en": "1 sliced tomato on the side"
+        }
+      ],
+      "steps": [
+        {
+          "es": "Saltea la cebolla y los champiñones en el aceite durante 4 minutos.",
+          "en": "Sauté the onion and mushrooms in the oil for 4 minutes."
+        },
+        {
+          "es": "Agrega la espinaca y cocina hasta que se marchite.",
+          "en": "Add the spinach and cook until wilted."
+        },
+        {
+          "es": "Vierte los huevos batidos con sal y pimienta y cocina a fuego bajo hasta que cuajen.",
+          "en": "Pour in the beaten eggs with salt and pepper and cook over low heat until set."
+        },
+        {
+          "es": "Dobla la tortilla y sírvela con las rodajas de tomate.",
+          "en": "Fold the omelette and serve with the tomato slices."
+        }
+      ]
+    },
+    {
+      "id": "greek-yogurt-berries",
+      "category": "snack",
+      "emoji": "🍓",
+      "minutes": 5,
+      "grams": 270,
+      "kcal": 290,
+      "protein": 20.7,
+      "carbs": 25.4,
+      "fat": 13.1,
+      "name": {
+        "es": "Yogur griego con frutos rojos y chía",
+        "en": "Greek yogurt with berries and chia"
+      },
+      "description": {
+        "es": "Un snack proteico y fresco que se prepara en minutos.",
+        "en": "A fresh, protein-rich snack ready in minutes."
+      },
+      "ingredients": [
+        {
+          "es": "170 g de yogur griego natural",
+          "en": "170 g plain Greek yogurt"
+        },
+        {
+          "es": "80 g de frutos rojos",
+          "en": "80 g mixed berries"
+        },
+        {
+          "es": "1 cucharada de semillas de chía",
+          "en": "1 tablespoon chia seeds"
+        },
+        {
+          "es": "10 g de nueces picadas",
+          "en": "10 g chopped walnuts"
+        },
+        {
+          "es": "1 cucharadita de miel",
+          "en": "1 teaspoon honey"
+        }
+      ],
+      "steps": [
+        {
+          "es": "Pon el yogur en un vaso o bowl.",
+          "en": "Put the yogurt in a glass or bowl."
+        },
+        {
+          "es": "Agrega los frutos rojos y la chía.",
+          "en": "Add the berries and chia seeds."
+        },
+        {
+          "es": "Termina con las nueces y la miel.",
+          "en": "Finish with the walnuts and honey."
+        }
+      ]
+    },
+    {
+      "id": "hummus-veggie-sticks",
+      "category": "snack",
+      "emoji": "🥕",
+      "minutes": 10,
+      "grams": 240,
+      "kcal": 290,
+      "protein": 10.6,
+      "carbs": 36.4,
+      "fat": 12.8,
+      "name": {
+        "es": "Hummus con bastones de zanahoria y pepino",
+        "en": "Hummus with carrot and cucumber sticks"
+      },
+      "description": {
+        "es": "Un snack crujiente con proteína vegetal y fibra.",
+        "en": "A crunchy snack with plant protein and fiber."
+      },
+      "ingredients": [
+        {
+          "es": "80 g de garbanzos cocidos",
+          "en": "80 g cooked chickpeas"
+        },
+        {
+          "es": "2 cucharaditas de tahini",
+          "en": "2 teaspoons tahini"
+        },
+        {
+          "es": "Jugo de ½ limón",
+          "en": "Juice of ½ lemon"
+        },
+        {
+          "es": "½ diente de ajo",
+          "en": "½ garlic clove"
+        },
+        {
+          "es": "1 cucharadita de aceite de oliva",
+          "en": "1 teaspoon olive oil"
+        },
+        {
+          "es": "1 zanahoria en bastones",
+          "en": "1 carrot, cut into sticks"
+        },
+        {
+          "es": "½ pepino en bastones",
+          "en": "½ cucumber, cut into sticks"
+        }
+      ],
+      "steps": [
+        {
+          "es": "Licúa los garbanzos con el tahini, el limón, el ajo, el aceite y 2 cucharadas de agua hasta lograr una crema suave.",
+          "en": "Blend the chickpeas with the tahini, lemon, garlic, oil and 2 tablespoons of water until smooth."
+        },
+        {
+          "es": "Ajusta la sal y, si hace falta, agrega más agua para la textura.",
+          "en": "Adjust the salt and add more water if needed for texture."
+        },
+        {
+          "es": "Sirve con los bastones de zanahoria y pepino.",
+          "en": "Serve with the carrot and cucumber sticks."
+        }
+      ]
+    }
+  ]
+}
