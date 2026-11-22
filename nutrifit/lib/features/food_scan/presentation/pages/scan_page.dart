@@ -92,107 +92,112 @@ class _ScanPageState extends ConsumerState<ScanPage> {
 
     return Scaffold(
       appBar: AppBar(title: Text(strings.scanTitle)),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          if (_imageBytes == null)
-            AppCard(
-              child: Column(
-                children: [
-                  Icon(
-                    Icons.photo_camera_outlined,
-                    size: 48,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    strings.scanHint,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                  const SizedBox(height: 16),
-                  AppButton(
-                    label: strings.takePhoto,
-                    onPressed: _isPicking
-                        ? null
-                        : () => _pick(ImageSource.camera),
-                  ),
-                  const SizedBox(height: 8),
-                  OutlinedButton.icon(
-                    onPressed: _isPicking
-                        ? null
-                        : () => _pick(ImageSource.gallery),
-                    icon: const Icon(Icons.photo_library_outlined),
-                    label: Text(strings.pickFromGallery),
-                  ),
-                  if (_pickError != null) ...[
+      // The results list ends with the "add to diary" action: keep it above
+      // the system navigation bar / gesture area.
+      body: SafeArea(
+        top: false,
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            if (_imageBytes == null)
+              AppCard(
+                child: Column(
+                  children: [
+                    Icon(
+                      Icons.photo_camera_outlined,
+                      size: 48,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                     const SizedBox(height: 12),
                     Text(
-                      strings.scanError,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.error,
-                      ),
+                      strings.scanHint,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
+                    const SizedBox(height: 16),
+                    AppButton(
+                      label: strings.takePhoto,
+                      onPressed: _isPicking
+                          ? null
+                          : () => _pick(ImageSource.camera),
+                    ),
+                    const SizedBox(height: 8),
+                    OutlinedButton.icon(
+                      onPressed: _isPicking
+                          ? null
+                          : () => _pick(ImageSource.gallery),
+                      icon: const Icon(Icons.photo_library_outlined),
+                      label: Text(strings.pickFromGallery),
+                    ),
+                    if (_pickError != null) ...[
+                      const SizedBox(height: 12),
+                      Text(
+                        strings.scanError,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.error,
+                        ),
+                      ),
+                    ],
                   ],
+                ),
+              )
+            else ...[
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.memory(_imageBytes!, fit: BoxFit.cover),
+              ),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: () => setState(() {
+                        _imageBytes = null;
+                        ref.read(scanControllerProvider.notifier).reset();
+                      }),
+                      icon: const Icon(Icons.refresh),
+                      label: Text(strings.retakePhoto),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: FilledButton.icon(
+                      onPressed: scanState.isLoading ? null : _analyze,
+                      icon: const Icon(Icons.auto_awesome),
+                      label: Text(strings.analyze),
+                    ),
+                  ),
                 ],
               ),
-            )
-          else ...[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Image.memory(_imageBytes!, fit: BoxFit.cover),
-            ),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: () => setState(() {
-                      _imageBytes = null;
-                      ref.read(scanControllerProvider.notifier).reset();
-                    }),
-                    icon: const Icon(Icons.refresh),
-                    label: Text(strings.retakePhoto),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: FilledButton.icon(
-                    onPressed: scanState.isLoading ? null : _analyze,
-                    icon: const Icon(Icons.auto_awesome),
-                    label: Text(strings.analyze),
-                  ),
-                ),
-              ],
-            ),
+            ],
+            if (scanState.isLoading) ...[
+              const SizedBox(height: 24),
+              AppLoader(label: strings.analyzing),
+            ],
+            if (scanState.hasError) ...[
+              const SizedBox(height: 16),
+              AppErrorView(
+                message: _errorMessage(scanState.error, strings),
+                retryLabel: strings.retry,
+                onRetry: _analyze,
+              ),
+              const SizedBox(height: 8),
+              TextButton(
+                onPressed: () => context.push('/add-food/snack'),
+                child: Text(strings.addManually),
+              ),
+            ],
+            if (scanState.hasValue) ...[
+              const SizedBox(height: 16),
+              ScanResults(
+                estimates: scanState.requireValue,
+                title: strings.detectedFoods,
+                actionLabel: strings.addToDiary,
+                onAddToDiary: () => _goToConfirm(scanState.requireValue),
+              ),
+            ],
           ],
-          if (scanState.isLoading) ...[
-            const SizedBox(height: 24),
-            AppLoader(label: strings.analyzing),
-          ],
-          if (scanState.hasError) ...[
-            const SizedBox(height: 16),
-            AppErrorView(
-              message: _errorMessage(scanState.error, strings),
-              retryLabel: strings.retry,
-              onRetry: _analyze,
-            ),
-            const SizedBox(height: 8),
-            TextButton(
-              onPressed: () => context.push('/add-food/snack'),
-              child: Text(strings.addManually),
-            ),
-          ],
-          if (scanState.hasValue) ...[
-            const SizedBox(height: 16),
-            ScanResults(
-              estimates: scanState.requireValue,
-              title: strings.detectedFoods,
-              actionLabel: strings.addToDiary,
-              onAddToDiary: () => _goToConfirm(scanState.requireValue),
-            ),
-          ],
-        ],
+        ),
       ),
     );
   }

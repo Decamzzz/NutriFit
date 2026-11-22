@@ -46,66 +46,73 @@ class _ConfirmScanPageState extends ConsumerState<ConfirmScanPage> {
 
     return Scaffold(
       appBar: AppBar(title: Text(strings.confirmScan)),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          if (_items.isEmpty)
-            AppCard(
-              child: Column(
-                children: [
-                  Text(strings.emptyScan),
-                  const SizedBox(height: 12),
-                  OutlinedButton(
-                    onPressed: () => context.go('/scan'),
-                    child: Text(strings.scanFood),
-                  ),
-                ],
-              ),
-            )
-          else ...[
-            AppCard(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    strings.selectMeal,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: 8),
-                  DropdownButtonFormField<String>(
-                    initialValue: _meal,
-                    items: [
-                      for (final entry in mealLabels.entries)
-                        DropdownMenuItem(
-                          value: entry.key,
-                          child: Text(entry.value),
-                        ),
-                    ],
-                    onChanged: (v) => setState(() => _meal = v ?? _meal),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 12),
-            for (final item in _items) ...[
-              _EditableItemCard(item: item),
-              const SizedBox(height: 8),
-            ],
-            const SizedBox(height: 8),
-            AppButton(
-              label: strings.saveToDiary,
-              onPressed: editor.isLoading ? null : _save,
-            ),
-            if (editor.hasError)
-              Padding(
-                padding: const EdgeInsets.only(top: 12),
-                child: Text(
-                  strings.saveError,
-                  style: TextStyle(color: Theme.of(context).colorScheme.error),
+      // Keep the scrollable content (and the save button at its end) above
+      // the system navigation bar / gesture area.
+      body: SafeArea(
+        top: false,
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            if (_items.isEmpty)
+              AppCard(
+                child: Column(
+                  children: [
+                    Text(strings.emptyScan),
+                    const SizedBox(height: 12),
+                    OutlinedButton(
+                      onPressed: () => context.go('/scan'),
+                      child: Text(strings.scanFood),
+                    ),
+                  ],
+                ),
+              )
+            else ...[
+              AppCard(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      strings.selectMeal,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    const SizedBox(height: 8),
+                    DropdownButtonFormField<String>(
+                      initialValue: _meal,
+                      items: [
+                        for (final entry in mealLabels.entries)
+                          DropdownMenuItem(
+                            value: entry.key,
+                            child: Text(entry.value),
+                          ),
+                      ],
+                      onChanged: (v) => setState(() => _meal = v ?? _meal),
+                    ),
+                  ],
                 ),
               ),
+              const SizedBox(height: 12),
+              for (final item in _items) ...[
+                _EditableItemCard(item: item),
+                const SizedBox(height: 8),
+              ],
+              const SizedBox(height: 8),
+              AppButton(
+                label: strings.saveToDiary,
+                onPressed: editor.isLoading ? null : _save,
+              ),
+              if (editor.hasError)
+                Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: Text(
+                    strings.saveError,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.error,
+                    ),
+                  ),
+                ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }

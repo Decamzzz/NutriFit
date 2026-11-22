@@ -28,6 +28,9 @@ void main() {
       expect(r.steps, isNotEmpty, reason: r.id);
       expect(r.name.es, isNotEmpty, reason: r.id);
       expect(r.name.en, isNotEmpty, reason: r.id);
+      // Every recipe ships with a bundled picture.
+      expect(r.image, isNotEmpty, reason: r.id);
+      expect(File(r.image).existsSync(), isTrue, reason: r.image);
       // calories must agree with the macros (4/4/9 kcal per gram, +-12%)
       final fromMacros = 4 * r.protein + 4 * r.carbs + 9 * r.fat;
       expect(
@@ -55,10 +58,7 @@ void main() {
 
   test('an unknown category is rejected', () {
     expect(
-      () => Recipe.fromJson({
-        'id': 'x',
-        'category': 'brunch',
-      }),
+      () => Recipe.fromJson({'id': 'x', 'category': 'brunch'}),
       throwsFormatException,
     );
   });

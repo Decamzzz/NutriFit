@@ -14,6 +14,7 @@ Recipe _recipe(String id, RecipeCategory category, String name, int kcal) =>
       id: id,
       category: category,
       emoji: '🥗',
+      image: '',
       minutes: 10,
       grams: 200,
       kcal: kcal,
@@ -37,7 +38,9 @@ class _FakeRecipeRepository implements RecipeRepository {
 void main() {
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
-  testWidgets('lists recipes with kcal and filters by category', (tester) async {
+  testWidgets('lists recipes with kcal and filters by category', (
+    tester,
+  ) async {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [

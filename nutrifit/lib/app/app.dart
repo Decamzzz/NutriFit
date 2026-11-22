@@ -38,6 +38,8 @@ class _NutriFitAppState extends ConsumerState<NutriFitApp> {
     final router = ref.watch(appRouterProvider);
     return MaterialApp.router(
       title: 'NutriFit',
+      // Hide the "DEBUG" ribbon that Flutter draws over every screen.
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
       themeMode: themeMode,

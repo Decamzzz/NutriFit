@@ -1,9 +1,9 @@
 # Project State
 
-Last updated: 2026-11-17
+Last updated: 2026-11-22
 
 ## Current phase
-Fase 3 (parcial) — peso/IMC/objetivo, progreso con gráfica y recetario implementados (pendiente verificar en local). Falta: estadísticas de calorías/macros y racha.
+Fase 3 (parcial) — peso/IMC/objetivo, progreso con gráfica y recetario (con fotos) implementados; branding (logo) y áreas seguras listos. Falta: estadísticas de calorías/macros y racha.
 
 ## What works
 - Sesión persistente: la app entra directo a /home si la sesión sigue viva; guard de rutas (públicas: onboarding/login, resto protegidas). Login determinista por resultado de la acción.
@@ -12,10 +12,12 @@ Fase 3 (parcial) — peso/IMC/objetivo, progreso con gráfica y recetario implem
 - Registro con confirmar contraseña y botón de ver/ocultar contraseña.
 - Migración remota `20261012150000_fase2_realtime.sql` aplicada (publicación `supabase_realtime`).
 - Registro con peso, estatura, objetivo e IMC en vivo; pantalla Progreso con gráfica de peso (fl_chart), meta, IMC e historial; Recetas (8, bilingües) con filtros, detalle y "Agregar al diario". Migración `20261117120000_fase3_body_weight.sql` (por aplicar).
-- (Fase 2) `flutter analyze` limpio, `flutter test` 29/29, `flutter build web` OK, escaneo real verificado con foto.
+- Branding y recetario visual: logo en onboarding/login (`core/widgets/app_logo.dart`) e imágenes de `lib/recipes_pictures/` en tarjetas y detalle (`RecipeImage`, con fallback al emoji).
+- UI respeta las áreas seguras del sistema (edge-to-edge): los botones al final del scroll quedan por encima de la barra de navegación/gestos.
+- `flutter analyze` limpio, `flutter test` 54 passed (+1 skipped), `flutter build web` OK.
 
 ## What is currently being implemented
-- Verificación local de Fase 3: build_runner, analyze, test, aplicar migración.
+- (nada en curso) Pulido de UI completado y verificado en local.
 
 ## Pending
 - Fase 3: gráficas de calorías/macros semanales y racha (mockup screen5).
@@ -23,7 +25,8 @@ Fase 3 (parcial) — peso/IMC/objetivo, progreso con gráfica y recetario implem
 - Fase 4: pulido, empty states, pulir escaneo (analizar varias fotos).
 
 ## Current important files
-- `lib/features/progress/` (weight_summary, weight_chart_data, weight_providers, widgets), `lib/features/recipes/`, `assets/recipes/recipes.json`, `lib/core/utils/body_metrics.dart`
+- `lib/features/progress/` (weight_summary, weight_chart_data, weight_providers, widgets), `lib/features/recipes/` (recipe_image incluido), `assets/recipes/recipes.json`, `lib/recipes_pictures/`, `lib/core/utils/body_metrics.dart`
+- `lib/core/widgets/app_logo.dart`, `assets/images/logo.jpg`
 - `supabase/migrations/20261117120000_fase3_body_weight.sql`
 - `lib/features/food_scan/` (domain, data/gemini_food_scanner, data/food_estimate_parser, presentation/scan_page, presentation/widgets/scan_results, providers/scan_providers)
 - `lib/features/diary/presentation/pages/confirm_scan_page.dart` (confirmación editable)
@@ -31,7 +34,7 @@ Fase 3 (parcial) — peso/IMC/objetivo, progreso con gráfica y recetario implem
 - `supabase/migrations/20261012150000_fase2_realtime.sql`
 
 ## Last completed work
-- Peso/IMC/objetivo en registro, progreso de peso con gráfica y recetario.
+- Logo, imágenes de recetas, áreas seguras del sistema y banner de depuración desactivado.
 
 ## Next recommended step
-- Verificar Fase 3 en local y luego `features/nutrition_stats` (promedios semanales y racha).
+- Implementar `features/nutrition_stats` (promedios semanales y racha) y aplicar la migración de peso en remoto si aún no está.

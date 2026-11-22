@@ -39,7 +39,7 @@ class WeightChartData {
     final lastX = points.last.x;
     final padX = math.max(1, (lastX * 0.04).ceil());
 
-    final ys = <double>[...points.map((p) => p.y), if (goalKg != null) goalKg];
+    final ys = <double>[...points.map((p) => p.y), ?goalKg];
     final low = ys.reduce(math.min);
     final high = ys.reduce(math.max);
     final interval = _niceInterval(high - low);
@@ -74,11 +74,8 @@ class WeightChartData {
   double get minX => 0;
 
   /// Calendar date for a chart x value.
-  DateTime dateAt(double x) => DateTime(
-    firstDate.year,
-    firstDate.month,
-    firstDate.day + x.round(),
-  );
+  DateTime dateAt(double x) =>
+      DateTime(firstDate.year, firstDate.month, firstDate.day + x.round());
 
   static double _niceInterval(double range) {
     if (range <= 4) return 1;

@@ -1,5 +1,63 @@
 # AI Development Log
 
+## 2026-11-22 — Log: Sin banner de depuración en las interfaces
+
+### Request
+Quitar el banner que Flutter dibuja sobre las pantallas.
+
+### Changes
+- `MaterialApp.router` ahora usa `debugShowCheckedModeBanner: false`, así que la cinta "DEBUG" (o "PROFILE") deja de aparecer en la esquina superior derecha de todas las pantallas.
+
+### Files
+Modified:
+- lib/app/app.dart
+
+### Verification
+- `flutter analyze`: No issues found.
+- `flutter test`: 54 passed, 1 skipped.
+
+---
+
+## 2026-11-20 — Log: Logo, imágenes de recetas y áreas seguras del sistema
+
+### Request
+Poner el logo `logo.jpg` en la app; usar las imágenes de `lib/recipes_pictures/` en el recetario; y corregir que los botones al final del scroll (receta, resultados del escaneo y guardado en el diario) quedaran debajo de la barra de acciones del teléfono.
+
+### Changes
+- **Logo**: `logo.jpg` se copió a `assets/images/logo.jpg` y se creó `core/widgets/app_logo.dart` (`AppLogo`). Se muestra en onboarding (con layout desplazable para pantallas pequeñas) y en login. Al ser un widget de `core`, cualquier feature puede reutilizarlo.
+- **Recetas con foto**: se agregó `Recipe.image` (asset key) y el campo `image` a las 8 recetas de `assets/recipes/recipes.json`. Las imágenes de `lib/recipes_pictures/` se declararon en `pubspec.yaml` y se creó `RecipeImage`, que usa `Image.asset` con `BoxFit.cover` y cae al emoji de la receta si el asset falta. La tarjeta y el detalle ahora muestran la foto real.
+- **Áreas seguras (edge-to-edge)**: las pantallas con contenido o acciones al final del scroll envuelven el body en `SafeArea(top: false)`: detalle de receta, resultados del escaneo, confirmación del escaneo, agregar comida y login. Así el botón de "Agregar al diario"/"Guardar" queda por encima de la barra de navegación o del área de gestos de Android.
+- **Limpieza de lints**: se aplicó el marcador null-aware (`?`) en dos mapas/listas para dejar `flutter analyze` sin avisos.
+- Tests: el catálogo ahora valida que cada receta tenga imagen y que el archivo exista; el test de onboarding busca el título i18n (la marca pasó a ser parte del logo).
+
+### Files
+Added:
+- assets/images/logo.jpg
+- lib/core/widgets/app_logo.dart
+- lib/features/recipes/presentation/widgets/recipe_image.dart
+
+Modified:
+- assets/recipes/recipes.json (campo `image` en las 8 recetas)
+- pubspec.yaml (asset `lib/recipes_pictures/`)
+- lib/features/recipes/domain/recipe.dart
+- lib/features/recipes/presentation/widgets/recipe_card.dart
+- lib/features/recipes/presentation/pages/recipe_detail_page.dart
+- lib/features/auth_profile/presentation/pages/onboarding_page.dart
+- lib/features/auth_profile/presentation/pages/login_page.dart
+- lib/features/food_scan/presentation/pages/scan_page.dart
+- lib/features/diary/presentation/pages/confirm_scan_page.dart
+- lib/features/diary/presentation/pages/add_food_page.dart
+- lib/core/data/user_settings_port_impl.dart, lib/features/progress/domain/weight_chart_data.dart (lints)
+- test/widget_test.dart, test/features/recipes/domain/recipe_test.dart, test/features/recipes/presentation/recipes_page_test.dart
+
+### Verification
+- `dart run build_runner build -d`: OK.
+- `flutter analyze`: No issues found.
+- `flutter test`: 54 passed, 1 skipped (probe manual de Gemini).
+- `flutter build web --release`: OK; el manifest incluye `assets/images/logo.jpg` y `lib/recipes_pictures/*`.
+
+---
+
 ## 2026-11-17 — Log: Peso/IMC/objetivo en el registro, gráfica de progreso y recetario
 
 ### Request

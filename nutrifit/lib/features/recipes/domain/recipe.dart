@@ -7,6 +7,7 @@ class Recipe {
     required this.id,
     required this.category,
     required this.emoji,
+    required this.image,
     required this.minutes,
     required this.grams,
     required this.kcal,
@@ -30,6 +31,8 @@ class Recipe {
       id: json['id'] as String,
       category: category,
       emoji: json['emoji'] as String,
+      // Bundled picture (assets/); empty means "use the emoji fallback".
+      image: json['image'] as String? ?? '',
       minutes: (json['minutes'] as num).toInt(),
       grams: (json['grams'] as num).toDouble(),
       kcal: (json['kcal'] as num).toInt(),
@@ -48,6 +51,9 @@ class Recipe {
   final String id;
   final RecipeCategory category;
   final String emoji;
+
+  /// Asset key of the recipe picture (e.g. `lib/recipes_pictures/arepa.jpg`).
+  final String image;
   final int minutes;
 
   /// Approximate weight of one serving, in grams.

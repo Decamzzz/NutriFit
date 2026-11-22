@@ -119,7 +119,7 @@ final class AuthControllerProvider
   AuthController create() => AuthController();
 }
 
-String _$authControllerHash() => r'7af663efdaa1fd66f749f77401794cea10fad3a4';
+String _$authControllerHash() => r'e16edfd2d95face0415428871734c159cc9347c7';
 
 /// Login/register/logout controller. UI handles AsyncValue states.
 

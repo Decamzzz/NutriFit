@@ -174,7 +174,7 @@ class EsStrings extends AppStrings {
   @override String get appName => 'NutriFit';
   @override String get onboardingTitle => 'Tu plan de nutrición inteligente';
   @override String get onboardingSubtitle =>
-      'Alcanza tus objetivos de salud con recetas personalizadas, racha de hábitos y un contador preciso de macros.';
+      'Alcanza tus objetivos de salud con un contador preciso de macros.';
   @override String get startPlan => 'Comienza tu plan';
   @override String get alreadyHaveAccount => 'Ya tengo una cuenta';
   @override String get home => 'Inicio';
@@ -372,7 +372,7 @@ class EnStrings extends AppStrings {
   @override String get appName => 'NutriFit';
   @override String get onboardingTitle => 'Your smart nutrition plan';
   @override String get onboardingSubtitle =>
-      'Reach your health goals with personalized recipes, habit streaks and an accurate macro tracker.';
+      'Reach your health goals with an accurate macro tracker.';
   @override String get startPlan => 'Start your plan';
   @override String get alreadyHaveAccount => 'I already have an account';
   @override String get home => 'Home';

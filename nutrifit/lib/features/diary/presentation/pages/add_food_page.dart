@@ -77,152 +77,165 @@ class _AddFoodPageState extends ConsumerState<AddFoodPage> {
 
     return Scaffold(
       appBar: AppBar(title: Text('${strings.addToMeal} · $mealTitle')),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          Text(
-            '${strings.frequentInMeal} · $mealTitle',
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          const SizedBox(height: 8),
-          for (final food in foods)
+      // Avoid drawing the form (and its save button) under the system
+      // navigation bar / gesture area.
+      body: SafeArea(
+        top: false,
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            Text(
+              '${strings.frequentInMeal} · $mealTitle',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(height: 8),
+            for (final food in foods)
+              AppCard(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            food.name,
+                            style: Theme.of(context).textTheme.labelLarge,
+                          ),
+                          Text(
+                            '${food.portion} · ${food.kcal.toStringAsFixed(0)} kcal',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                          Text(
+                            'P: ${food.protein}g · C: ${food.carbs}g · G: ${food.fat}g',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ],
+                      ),
+                    ),
+                    IconButton.filledTonal(
+                      onPressed: editor.isLoading
+                          ? null
+                          : () async {
+                              await ref
+                                  .read(diaryEditorProvider.notifier)
+                                  .add(
+                                    day: day,
+                                    mealName: widget.meal.name,
+                                    foodName: food.name,
+                                    grams: 100,
+                                    kcal: food.kcal,
+                                    protein: food.protein,
+                                    carbs: food.carbs,
+                                    fat: food.fat,
+                                  );
+                              if (context.mounted) context.pop();
+                            },
+                      icon: const Icon(Icons.add),
+                    ),
+                  ],
+                ),
+              ),
+            const SizedBox(height: 16),
+            Text(
+              strings.manualEntry,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(height: 8),
             AppCard(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: _name,
+                      decoration: InputDecoration(labelText: strings.foodName),
+                      validator: (v) =>
+                          (v == null || v.trim().isEmpty) ? '!' : null,
+                    ),
+                    Row(
                       children: [
-                        Text(
-                          food.name,
-                          style: Theme.of(context).textTheme.labelLarge,
+                        Expanded(
+                          child: TextFormField(
+                            controller: _grams,
+                            decoration: InputDecoration(
+                              labelText: strings.grams,
+                            ),
+                            keyboardType: TextInputType.number,
+                          ),
                         ),
-                        Text(
-                          '${food.portion} · ${food.kcal.toStringAsFixed(0)} kcal',
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                        Text(
-                          'P: ${food.protein}g · C: ${food.carbs}g · G: ${food.fat}g',
-                          style: Theme.of(context).textTheme.bodySmall,
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: TextFormField(
+                            controller: _kcal,
+                            decoration: const InputDecoration(
+                              labelText: 'kcal',
+                            ),
+                            keyboardType: TextInputType.number,
+                            validator: (v) =>
+                                (v == null || v.trim().isEmpty) ? '!' : null,
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                  IconButton.filledTonal(
-                    onPressed: editor.isLoading
-                        ? null
-                        : () async {
-                            await ref
-                                .read(diaryEditorProvider.notifier)
-                                .add(
-                                  day: day,
-                                  mealName: widget.meal.name,
-                                  foodName: food.name,
-                                  grams: 100,
-                                  kcal: food.kcal,
-                                  protein: food.protein,
-                                  carbs: food.carbs,
-                                  fat: food.fat,
-                                );
-                            if (context.mounted) context.pop();
-                          },
-                    icon: const Icon(Icons.add),
-                  ),
-                ],
-              ),
-            ),
-          const SizedBox(height: 16),
-          Text(
-            strings.manualEntry,
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          const SizedBox(height: 8),
-          AppCard(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  TextFormField(
-                    controller: _name,
-                    decoration: InputDecoration(labelText: strings.foodName),
-                    validator: (v) =>
-                        (v == null || v.trim().isEmpty) ? '!' : null,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          controller: _grams,
-                          decoration: InputDecoration(
-                            labelText: strings.grams,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            controller: _protein,
+                            decoration: const InputDecoration(
+                              labelText: 'P (g)',
+                            ),
+                            keyboardType: TextInputType.number,
                           ),
-                          keyboardType: TextInputType.number,
                         ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: TextFormField(
-                          controller: _kcal,
-                          decoration: const InputDecoration(labelText: 'kcal'),
-                          keyboardType: TextInputType.number,
-                          validator: (v) =>
-                              (v == null || v.trim().isEmpty) ? '!' : null,
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: TextFormField(
+                            controller: _carbs,
+                            decoration: const InputDecoration(
+                              labelText: 'C (g)',
+                            ),
+                            keyboardType: TextInputType.number,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          controller: _protein,
-                          decoration: const InputDecoration(labelText: 'P (g)'),
-                          keyboardType: TextInputType.number,
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: TextFormField(
+                            controller: _fat,
+                            decoration: const InputDecoration(
+                              labelText: 'G (g)',
+                            ),
+                            keyboardType: TextInputType.number,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: TextFormField(
-                          controller: _carbs,
-                          decoration: const InputDecoration(labelText: 'C (g)'),
-                          keyboardType: TextInputType.number,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: TextFormField(
-                          controller: _fat,
-                          decoration: const InputDecoration(labelText: 'G (g)'),
-                          keyboardType: TextInputType.number,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  FilledButton(
-                    onPressed: editor.isLoading ? null : _save,
-                    child: Text(strings.save),
-                  ),
-                ],
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    FilledButton(
+                      onPressed: editor.isLoading ? null : _save,
+                      child: Text(strings.save),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 12),
-          AppCard(child: Text(strings.tipScale)),
-          const SizedBox(height: 8),
-          OutlinedButton.icon(
-            onPressed: () => context.push('/scan'),
-            icon: const Icon(Icons.camera_alt_outlined),
-            label: Text(strings.scanFood),
-          ),
-          const SizedBox(height: 4),
-          Center(
-            child: Text(
-              ymd(day),
-              style: Theme.of(context).textTheme.bodySmall,
+            const SizedBox(height: 12),
+            AppCard(child: Text(strings.tipScale)),
+            const SizedBox(height: 8),
+            OutlinedButton.icon(
+              onPressed: () => context.push('/scan'),
+              icon: const Icon(Icons.camera_alt_outlined),
+              label: Text(strings.scanFood),
             ),
-          ),
-        ],
+            const SizedBox(height: 4),
+            Center(
+              child: Text(
+                ymd(day),
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

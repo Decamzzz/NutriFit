@@ -174,7 +174,7 @@ final class UserSettingsEditorProvider
 }
 
 String _$userSettingsEditorHash() =>
-    r'6e5b5d194d47f352558fdcd7ed1f4c22793f2d98';
+    r'73408b7914b7668a87d3a4ae533071c70c3715e5';
 
 /// Goal editor. Invalidates the cached settings on success.
 

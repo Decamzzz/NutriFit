@@ -79,8 +79,8 @@ class SupabaseUserSettingsPort implements UserSettingsPort {
       throw const Failure.validation(message: 'invalid-goal-weight');
     }
     final changes = <String, Object>{
-      if (heightCm != null) 'height_cm': heightCm,
-      if (goalWeightKg != null) 'goal_weight_kg': goalWeightKg,
+      'height_cm': ?heightCm,
+      'goal_weight_kg': ?goalWeightKg,
     };
     if (changes.isEmpty) {
       throw const Failure.validation(message: 'nothing-to-save');

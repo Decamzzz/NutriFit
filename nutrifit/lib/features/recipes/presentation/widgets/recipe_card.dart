@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../app/providers/app_settings.dart';
 import '../../../../core/widgets/app_card.dart';
 import '../../domain/recipe.dart';
+import 'recipe_image.dart';
 
 /// List item (screen4): emoji header, kcal + time chips and the name.
 class RecipeCard extends ConsumerWidget {
@@ -27,20 +28,7 @@ class RecipeCard extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: 120,
-                width: double.infinity,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      scheme.primaryContainer,
-                      scheme.secondaryContainer,
-                    ],
-                  ),
-                ),
-                child: Text(recipe.emoji, style: const TextStyle(fontSize: 56)),
-              ),
+              RecipeImage(recipe: recipe, height: 120),
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(

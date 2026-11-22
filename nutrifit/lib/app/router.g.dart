@@ -8,17 +8,17 @@ part of 'router.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
-/// Central route table. Fase 3 adds /recipe/:id.
+/// Central route table.
 
 @ProviderFor(appRouter)
 final appRouterProvider = AppRouterProvider._();
 
-/// Central route table. Fase 3 adds /recipe/:id.
+/// Central route table.
 
 final class AppRouterProvider
     extends $FunctionalProvider<GoRouter, GoRouter, GoRouter>
     with $Provider<GoRouter> {
-  /// Central route table. Fase 3 adds /recipe/:id.
+  /// Central route table.
   AppRouterProvider._()
     : super(
         from: null,
@@ -52,4 +52,4 @@ final class AppRouterProvider
   }
 }
 
-String _$appRouterHash() => r'534b611c657f9d27d94a7edaac6c01c137f6c035';
+String _$appRouterHash() => r'09620d40ee7945c5dfdd507a8be991e4cfda074c';

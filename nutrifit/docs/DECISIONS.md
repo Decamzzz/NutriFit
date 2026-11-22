@@ -253,3 +253,26 @@ Escribir desde el cliente tras el signUp (falla sin sesión); columna `weight` e
 ### Reason
 Es la opción que funciona con y sin confirmación de correo, mantiene RLS intacto y permite graficar la evolución.
 
+---
+
+## ADR-013 — Decision: Assets de marca/recetas y respeto de los insets del sistema
+
+Date: 2026-11-20
+
+### Decision
+1. El logo de marca se copia a `assets/images/logo.jpg` y se expone como `core/widgets/app_logo.dart` (`AppLogo`), reutilizable por cualquier feature.
+2. Las fotos de recetas viven en `lib/recipes_pictures/` (como pidió el usuario), se declaran en `pubspec.yaml` y se referencian desde `Recipe.image`; `RecipeImage` usa `Image.asset` y cae al emoji de la receta si el asset falta.
+3. Las pantallas con contenido o acciones al final del scroll envuelven el body en `SafeArea(top: false)` cuando no tienen `bottomNavigationBar`, para no dibujar bajo la barra de navegación/gestos de Android.
+
+### Context
+Android 15+ fuerza edge-to-edge: el contenido se dibuja debajo de las barras del sistema. Los botones al final de listas largas (detalle de receta, resultados del escaneo, confirmación/guardado en el diario) quedaban tapados por la barra de navegación.
+
+### Consequences
+Los CTAs quedan siempre accesibles al llegar al final del scroll. Las imágenes se resuelven offline (sin Supabase Storage) y hay fallback visual. Cualquier pantalla nueva con scroll debe usar `SafeArea(top: false)` si no tiene `bottomNavigationBar`; si lo tiene, la barra debe llevar su propio `SafeArea`.
+
+### Alternatives considered
+Activar/desactivar edge-to-edge manualmente (rompe el comportamiento estándar de Android 15); calcular padding a mano en cada página (duplicación y errores); subir las fotos a Supabase Storage (fuera del alcance: sin Storage).
+
+### Reason
+`SafeArea` es la solución idiomática de Flutter para los insets y el bundle local mantiene el recetario offline y sin infraestructura extra.
+

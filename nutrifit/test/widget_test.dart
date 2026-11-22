@@ -10,6 +10,7 @@ void main() {
     await tester.pumpWidget(const ProviderScope(child: NutriFitApp()));
     await tester.pump(const Duration(seconds: 1));
     // Onboarding copy comes from i18n (ES default), not hardcoded widgets.
-    expect(find.text('NutriFit'), findsWidgets);
+    // The brand name is part of the logo image, so check the title instead.
+    expect(find.text('Tu plan de nutrición inteligente'), findsOneWidget);
   });
 }

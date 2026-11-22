@@ -14,6 +14,8 @@ _UserSettings _$UserSettingsFromJson(Map<String, dynamic> json) =>
       goal: json['goal'] as String? ?? 'maintain',
       activityLevel: json['activity_level'] as String? ?? 'moderate',
       calorieTarget: (json['calorie_target'] as num?)?.toInt() ?? 2200,
+      heightCm: (json['height_cm'] as num?)?.toDouble(),
+      goalWeightKg: (json['goal_weight_kg'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$UserSettingsToJson(_UserSettings instance) =>
@@ -24,4 +26,6 @@ Map<String, dynamic> _$UserSettingsToJson(_UserSettings instance) =>
       'goal': instance.goal,
       'activity_level': instance.activityLevel,
       'calorie_target': instance.calorieTarget,
+      'height_cm': instance.heightCm,
+      'goal_weight_kg': instance.goalWeightKg,
     };
